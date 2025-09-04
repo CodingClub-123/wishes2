@@ -1,4 +1,4 @@
-/* ===== UTIL ===== */
+
 const $ = (sel) => document.querySelector(sel);
 const teacherNameInput = $('#teacherName');
 const createBtn = $('#createBtn');
