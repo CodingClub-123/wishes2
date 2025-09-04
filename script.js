@@ -1,4 +1,4 @@
-
+/* ===== UTIL ===== */
 const $ = (sel) => document.querySelector(sel);
 const teacherNameInput = $('#teacherName');
 const createBtn = $('#createBtn');
@@ -41,8 +41,7 @@ const quotes = [
 ];
 
 function getRandomQuote() {
-  const index = Math.floor(Math.random() * quotes.length);
-  return quotes[index];
+  return quotes[Math.floor(Math.random() * quotes.length)];
 }
 
 /* ===== WISH GENERATION ===== */
@@ -75,6 +74,8 @@ createBtn.addEventListener('click', () => {
 resetBtn.addEventListener('click', () => {
   teacherNameInput.value = '';
   teacherNameInput.focus();
+  wishBody.innerHTML = '';  // also clear preview text
+  closePreview();
 });
 
 closeBtn.addEventListener('click', closePreview);
@@ -84,14 +85,7 @@ document.addEventListener('keydown', (e) => {
 
 /* Press Enter to create */
 teacherNameInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    createBtn.click();
-  }
-});
-
-/* Fake logout button */
-document.getElementById('logoutBtn').addEventListener('click', () => {
-  alert('Logged out (demo).');
+  if (e.key === 'Enter') createBtn.click();
 });
 
 /* ===== GLITTER BACKGROUND ===== */
@@ -131,15 +125,11 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
       const flicker = (Math.sin(p.tw) * 0.5 + 0.5) * 0.8 + 0.2;
       ctx.beginPath();
       const grd = ctx.createRadialGradient(
-        p.x,
-        p.y,
-        0,
-        p.x,
-        p.y,
-        p.r * 10
+        p.x, p.y, 0,
+        p.x, p.y, p.r * 10
       );
-      grd.addColorStop(0, rgba(255,255,255,${0.9 * flicker}));
-      grd.addColorStop(0.3, rgba(255,240,210,${0.35 * flicker}));
+      grd.addColorStop(0, `rgba(255,255,255,${0.9 * flicker})`);
+      grd.addColorStop(0.3, `rgba(255,240,210,${0.35 * flicker})`);
       grd.addColorStop(1, 'rgba(255,255,255,0)');
       ctx.fillStyle = grd;
       ctx.arc(p.x, p.y, p.r * 10, 0, TAU);
