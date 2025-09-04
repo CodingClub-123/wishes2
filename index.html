@@ -10,17 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
-
   <style>
     body {
       font-family: "Poppins", sans-serif;
       margin: 0;
     }
 
-    /* -------- Header -------- */
-    .topbar {
-      background: rgba(0,0,0,0.3);
+    header {
+      background: rgba(0, 0, 0, 0.3);
       padding: 12px;
     }
 
@@ -28,20 +25,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: nowrap;  /* always keep row layout */
-      gap: 10px;
     }
 
     .logo {
       height: 60px;
       width: auto;
-      flex-shrink: 0;
     }
 
     .brand-text {
       flex: 1;
       text-align: center;
-      padding: 0 8px;
+      padding: 0 10px;
     }
 
     .brand-text h1 {
@@ -57,38 +51,74 @@
       opacity: 0.9;
     }
 
-    .brand-extra {
-      font-size: 0.7rem;
+    main {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .input {
+      width: 90%;
+      max-width: 400px;
+      padding: 10px;
+      margin: 12px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .actions {
+      margin: 15px 0;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin: 5px;
+    }
+
+    .primary { background: #6c63ff; color: #fff; }
+    .danger { background: #ff6b6b; color: #fff; }
+    .ghost  { background: #f1f1f1; color: #333; }
+
+    .preview {
+      margin: 20px auto;
+      max-width: 500px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .hidden { display: none; }
+
+    .tip {
+      font-size: 0.85rem;
       opacity: 0.85;
     }
 
-    /* -------- Responsive -------- */
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
     @media (max-width: 768px) {
-      .logo {
-        height: 50px; /* smaller on mobile */
-      }
-
-      .brand-text h1 {
-        font-size: 0.85rem;
-      }
-
-      .brand-text p {
-        font-size: 0.65rem;
-      }
+      .logo { height: 50px; }
+      .brand-text h1 { font-size: 0.9rem; }
+      .brand-text p { font-size: 0.65rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="topbar">
+  <header>
     <div class="brand">
-      <!-- Left Logo -->
       <img src="prince.jpg" alt="College Logo" class="logo" />
-
-      <!-- Center Text -->
       <div class="brand-text">
         <h1>Prince Shri Venkateshwara Arts & Science College</h1>
-        <p class="brand-extra">
+        <p>
           Approved by the Govt. of Tamil Nadu / Affiliated to University of Madras / 
           NAAC Accredited with A+ Grade<br>
           NIRF Band: 101-150 / ISO 9001:2015 Certified Institution / 
@@ -96,16 +126,13 @@
         </p>
         <h1>Coding Club — Department of Computer Applications</h1>
       </div>
-
-      <!-- Right Logo -->
       <img src="logo.jpg" alt="Coding Club Logo" class="logo" />
     </div>
   </header>
 
-  <!-- Main App -->
-  <main class="card">
+  <main>
     <h2>🌸 Teachers' Day Wishes 🌸</h2>
-    <p class="sub">Enter your name and create a beautiful memory.</p>
+    <p>Enter your name and create a beautiful memory.</p>
 
     <input id="teacherName" class="input" type="text" placeholder="Type teacher's name…" maxlength="40" />
 
@@ -114,23 +141,18 @@
       <button id="resetBtn" class="btn danger">🔁 Reset</button>
     </div>
 
-    <!-- Wish Preview -->
     <div id="preview" class="preview hidden">
-      <div class="preview-header">
-        <h3 id="wishTitle">🎁 Your Wish</h3>
-        <div class="burst">🎉</div>
-      </div>
-      <div id="wishBody" class="wish-body"></div>
-      <div class="preview-actions">
-        <button id="closeBtn" class="btn ghost">Close ✖</button>
+      <h3>🎁 Your Wish</h3>
+      <div id="wishBody"></div>
+      <div class="actions">
+        <button id="closeBtn" class="btn ghost">✖ Close</button>
       </div>
     </div>
 
-    <p class="tip">📸 Tip: Take a screenshot of your wish and share it with your teachers!</p>
+    <p class="tip">📸 Take a screenshot of your wish and share it with your teachers!</p>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <footer>
     Made with ❤ by <strong>Coding Club — Department of Computer Applications</strong>
   </footer>
 
